@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
+
+Auth::routes();
+
+Route::get('auth/google/redirect', 'Auth\SocialAuthGoogleController@redirect');
+Route::get('auth/google/callback', 'Auth\SocialAuthGoogleController@callback');
+Route::get('auth/facebook/redirect', 'Auth\SocialAuthFacebookController@redirect');
+Route::get('auth/facebook/callback', 'Auth\SocialAuthFacebookController@callback');
+
+Route::get('/home', 'HomeController@index')->name('home');
